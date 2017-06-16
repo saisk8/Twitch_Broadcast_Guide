@@ -5,8 +5,17 @@ function getinfo() {
         var url = "https://wind-bow.gomix.me/twitch-api/streams/" + c + "/?callback=?";
         $.getJSON(url, function(data) {
             console.log(data);
+            updateInfo(data, c);
         });
     });
+}
+
+function updateInfo(data, c) {
+    if (data.stream === null) {
+        $(document)
+            .getElementById("#status-" + c)
+            .textContent = "Offline";
+    }
 }
 
 $(document)
