@@ -5,17 +5,34 @@ function getinfo() {
         var url = "https://wind-bow.gomix.me/twitch-api/streams/" + c + "/?callback=?";
         $.getJSON(url, function(data) {
             console.log(data);
-            updateInfo(data, c);
+            setStreamStatus(data, c);
         });
     });
 }
 
-function updateInfo(data, c) {
-    if (data.stream === null) {
-        $(document)
-            .getElementById("#status-" + c)
-            .textContent = "Offline";
+function setStreamStatus(data, c) {
+    if (data.stream !== null) {
+        updateInfo(data, c);
+    } else if (data.stream === null) {
+        var temp = c + "-text";
+        document
+            .getElementById(temp)
+            .textContent = "The channel is not streaming currently";
     }
+}
+
+function updateInfo(data, c) {
+    var temp = c + "-text";
+    document
+        .getElementById(temp)
+        .textContent = data.stream.game;
+    temp = c + "-status";
+    document
+        .getElementById(temp)
+        .addClass("green");
+    document
+        .getElementById(temp)
+        .removeClass("red");
 }
 
 $(document)
