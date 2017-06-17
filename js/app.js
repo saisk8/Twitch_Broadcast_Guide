@@ -27,11 +27,9 @@ function updateInfo(data, c) {
         .getElementById(temp)
         .textContent = data.stream.game;
     temp = c + "-status";
-    document
-        .getElementById(temp)
+    $(temp)
         .addClass("green");
-    document
-        .getElementById(temp)
+    $(temp)
         .removeClass("red");
 }
 
