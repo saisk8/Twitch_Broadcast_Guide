@@ -31,7 +31,6 @@ function updateInfo(data, c) {
         .getElementById(temp)
         .textContent = data.stream.channel.game + "; " + data.stream.channel.status;
     temp = "#" + c + "-status";
-    console.log(temp);
     $(temp)
         .addClass("green");
     $(temp)
@@ -40,6 +39,8 @@ function updateInfo(data, c) {
     document
         .getElementById(temp)
         .title = "Online";
+    document.getElementById(temp)
+        .href = data.stream.channel.url;
     temp = c + "-img";
     document.getElementById(temp)
         .src = data.stream.channel.logo;
