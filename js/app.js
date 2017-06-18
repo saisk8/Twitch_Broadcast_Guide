@@ -3,6 +3,7 @@ var channel_list = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storb
 function getinfo() {
     channel_list.forEach(function(c) {
         var url = "https://wind-bow.gomix.me/twitch-api/streams/" + c + "/?callback=?";
+        console.log(url);
         $.getJSON(url, function(data) {
             console.log(data);
             setStreamStatus(data, c);
@@ -26,7 +27,8 @@ function updateInfo(data, c) {
     document
         .getElementById(temp)
         .textContent = data.stream.game;
-    temp = c + "-status";
+    temp = "#" + c + "-status";
+    console.log(temp);
     $(temp)
         .addClass("green");
     $(temp)
