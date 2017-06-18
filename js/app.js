@@ -19,6 +19,9 @@ function setStreamStatus(data, c) {
         document
             .getElementById(temp)
             .textContent = "The channel is not streaming currently";
+        temp = c + "-status";
+        document.getElementById(temp)
+            .title = "Offline";
     }
 }
 
@@ -33,6 +36,9 @@ function updateInfo(data, c) {
         .addClass("green");
     $(temp)
         .removeClass("red");
+    document
+        .getElementById(temp)
+        .title = "Online";
 }
 
 $(document)
