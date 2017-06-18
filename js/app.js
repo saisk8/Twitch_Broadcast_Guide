@@ -29,16 +29,20 @@ function updateInfo(data, c) {
     var temp = c + "-text";
     document
         .getElementById(temp)
-        .textContent = data.stream.game;
+        .textContent = data.stream.channel.game + "; " + data.stream.channel.status;
     temp = "#" + c + "-status";
     console.log(temp);
     $(temp)
         .addClass("green");
     $(temp)
         .removeClass("red");
+    temp = c + "-status";
     document
         .getElementById(temp)
         .title = "Online";
+    temp = c + "-img";
+    document.getElementById(temp)
+        .src = data.stream.channel.logo;
 }
 
 $(document)
